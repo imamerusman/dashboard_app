@@ -1,0 +1,12 @@
+{
+    "equipments":
+[
+    {"id":"1","title":"FileServer_015","description":"Consectetur adipiscing elit. Donec bibendum sapien orci. Duis enim urna, fermentum auctor tortor sit amet, vehicula pharetra ligula. Vestibulum pulvinar elementum iaculis. Proin pulvinar sodales faucibus. Aliquam tristique neque non mi ullamcorper rhoncus. Phasellus fermentum sapien eget lacus ullamcorper ullamcorper. Donec et vestibulum lectus, sagittis aliquet lorem. Nulla ut libero a lorem suscipit tincidunt.", "img":"linux","location":"main floor","icon":"line_graph","type_of_problem":"Disk array Latency", "event_time":"Monday 15.11.2015 16:34:44", "level":"critical", "state":"Berlin"},
+    {"id":"2", "title":"LaserCutter_BetaMin","description":"Consectetur adipiscing elit. Donec bibendum sapien orci. Duis enim urna, fermentum auctor tortor sit amet, vehicula pharetra ligula. Vestibulum pulvinar elementum iaculis. Proin pulvinar sodales faucibus. Aliquam tristique neque non mi ullamcorper rhoncus. Phasellus fermentum sapien eget lacus ullamcorper ullamcorper. Donec et vestibulum lectus, sagittis aliquet lorem. Nulla ut libero a lorem suscipit tincidunt.","img":"drupal","location":"Back room","icon":"pie_graph","type_of_problem":"CO2 pressure valvle shows anomalous spikes", "event_time":"Monday  16.12.2015 17:34:44", "level":"important", "state":"Stuttgart"}
+    ],
+    "overallData":
+    [
+        500,
+        200
+    ]
+}

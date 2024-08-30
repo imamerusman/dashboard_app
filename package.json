@@ -1,0 +1,28 @@
+{
+  "name": "Dashboard_App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahsam Abbas",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-connect": "^2.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.2",
+    "gulp-ruby-sass": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "angular-ui-router": "~0.2.18"
+  },
+  "dependencies": {
+    "angular": "^1.2.9",
+    "angular-cookies": "^1.2.9",
+    "angular-route": "^1.2.9",
+    "angular-resource": "^1.5.0"
+  }
+}

@@ -1,0 +1,163 @@
+<div class="off-canvas-wrapper">
+    <header>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <h3 class="logo">DatatronIQ</h3>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <li class="search-wrp">
+                        <div class="search">
+                            <input type="search" ng-model="search.title" placeholder="Search">
+                            <button class="button" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                    </li>
+                    <li class="user-wrp"><img class="user-pic" ng-src="../app_content/img/user.png" alt=""><span id="user-pic-text"></span></li>
+                    <li><a href="" class="account">Account</a></li>
+                    <li class="sep"><span>|</span></li>
+                    <li><a href="/login" class="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+            <div class="row column side-bar">
+                <ul class="side-nav menu vertical">
+                    <li><a href="/dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                    <li  class="active"><a href="/detail"><i class="fa fa-pie-chart"></i>Detail Page</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="off-canvas-content" data-off-canvas-content>
+            <div class="title-bar hide-for-large">
+                <div class="title-bar-left">
+                    <button class="menu-icon" type="button" data-open="my-info"></button>
+                    <span class="title-bar-title">Menu</span>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="row options detail_page">
+                    <div class="columns">
+                        <input id="radio-all" ng-model="levelName" type="radio" name="level">
+                        <label for="radio-all">All</label>
+                        <input id="radio-critical" ng-model="levelName" type="radio" value="Critical" name="level">
+                        <label for="radio-critical">Critical</label>
+                        <input id="radio-important" ng-model="levelName" type="radio" value="Important" name="level">
+                        <label for="radio-important">Important</label>
+                    </div>
+                    <div class="columns">
+                        <input id="checkbox1" type="checkbox">
+                        <label for="checkbox1">Stuttgart</label>
+                        <input id="checkbox2" type="checkbox">
+                        <label for="checkbox2">Berlin</label>
+                    </div>
+                    <div class="columns" style="float:left;">
+                        <input id="checkbox3" type="checkbox">
+                        <label for="checkbox3">My Department</label>
+                        <input id="checkbox4" type="checkbox" checked>
+                        <label for="checkbox4">All Departments</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="large-12 white_bg">
+                    <div class="large-6 columns">
+
+                        <div class=" column" ng-repeat="d in equipments | filter:search | filter:levelName">
+
+
+                            <div class="row header-box">
+                                <div class="large-12 columns">
+                                    <i class="fa fa fa-briefcase header-icon"></i>
+                                    <img class="header-img" src="../app_content/img/{{d.img}}.jpg" width="64" height="64" alt="">
+                                    <h2 class="header-title">{{d.title}} <span>( {{d.location}} )</span></h2>
+                                    <p class="meta">{{d.event_time}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row content-box">
+                                <div class="large-12 columns">
+                                    <h4>{{d.type_of_problem}} <i class="fa fa-caret-right"></i></h4>
+                                </div>
+                                <div class="large-6 medium-6 columns">
+
+                                    <div ng-repeat="s in d.equipment_details">
+                                        <p><span class="detail_id">{{s.id}}:</span>{{s.title}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row footer-meta">
+                                <div class="large-5 columns">
+                                    <a href="#"><i class="fa fa-file-text-o"></i>Resolve</a>
+                                </div>
+                                <div class="large-7 columns text-right">
+                                    <a href="#" class="share"><i class="fa fa-mail-forward"></i> Share <i class="fa fa-chevron-right"></i></a>
+                                    <a href="#"><i class="fa fa-user"></i>Assigned To Mahsam</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row comments">
+                                <div class="large-12 column">
+                                    <div class="comment-wrp">
+                                        <img class="user-img" src="../app_content/img/marty.jpg" width="64" height="64" alt="">
+                                        <h5 class="user-name">Marty</h5>
+                                        <p class="comment-meta">Monday, 15.11.2015, 16:34:44</p>
+                                        <div class="comment">
+                                            <p>This is happening all the time, and we tried to replace the controller already
+                                                twice, no idea what else we coud do now?</p>
+                                        </div>
+                                    </div>
+                                    <div class="comment-wrp">
+                                        <img class="user-img" src="../app_content/img/molly.jpg" width="64" height="64" alt="">
+                                        <h5 class="user-name">Molly</h5>
+                                        <p class="comment-meta">Monday, 15.11.2015, 16:34:44</p>
+                                        <div class="comment">
+                                            <p>This is happening all the time, and we tried to replace the controller already
+                                                twice, no idea what else we coud do now?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="large-6 columns">
+                        <div class="equipment-summary">
+                            <div class="alert_section">
+                                <div class="large-4 pull-left">
+                                    <div id="buttonboxback"><a>Previous alert</a></div>
+                                    
+                                </div>
+                                <div class="large-4 pull-left">
+                                    <h5>Alert CD-52 <span class="alert_time">UTC 12:23:98</span></h5>
+                                </div>
+                                <div class="large-4 pull-left">
+                                    <div id="buttonboxnext"><a>Next alert</a></div>
+                                </div>
+                            </div>
+                            <hr class="mg_b_xs">
+                            <div class="clearfix"></div>
+                            <div class="custom-panel-heading darkblue">
+                                <i class="fa fa-gear"></i>
+                                <h4>Original Signals</h4>
+                            </div>
+
+                            <div class="custom-panel-body">
+                                <div class="row">
+                                    <div class="large-6 columns equipment-chart ">
+                                        <div linear-chart chart-data="logsData"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

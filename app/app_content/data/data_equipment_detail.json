@@ -1,0 +1,24 @@
+{
+    "equipments":
+[
+    {"id":"1","title":"FileServer_015", "location":"main floor", 
+    "img":"linux","icon":"line_graph","type_of_problem":"Disk array Latency", 
+    "event_time":"Monday 15.11.2015 16:34:44", "level":"critical", 
+    "state":"Berlin", 
+    "equipment_details":[
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"},
+        {"id":"5026", "title":"SATA link upto 3.0 GBPS"}
+    ]}
+    ],
+    "overallData":
+    [
+        500,
+        200
+    ]
+}

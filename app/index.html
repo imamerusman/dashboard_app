@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8" />
+    <base href="/" />
+    <title>AngularJS User Registration and Login Example</title>
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+     <!-- Stylesheets -->
+    <link href="app_content/css/style.min.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <!--Flash Messages-->
+        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash"
+        ng-bind="flash.message"></div>
+    
+    <!-- Dynamic View Directive -->
+        <div ng-view></div>
+
+
+    <!-- Scripts-->
+    <!-- Google Charts Api For Pie Chart -->
+    <script src="app_content/js/vendors/jsapi.js"></script>
+    <!-- d3 Library -->
+     <script src="app_content/js/vendors/d3.v3.js"></script>
+     <!-- App Resoucres -->
+    <script src="app_content/js/main.js"></script>
+
+</body>
+</html>

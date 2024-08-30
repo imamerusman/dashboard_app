@@ -1,0 +1,213 @@
+<div class="off-canvas-wrapper">
+    <header>
+        <div class="top-bar">
+            <!-- Logo -->
+            <div class="top-bar-left">
+                <h3 class="logo">DatatronIQ</h3>
+            </div>
+            <div class="top-bar-right">
+                <!-- Search Bar and accounts menu -->
+                <ul class="menu">
+                    <li class="search-wrp">
+                        <div class="search">
+                            <input type="search" ng-model="search.title" placeholder="Search">
+                            <button class="button" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                    </li>
+                    <li class="user-wrp"><img class="user-pic" ng-src="../app_content/img/user.png" alt=""><span id="user-pic-text"></span></li>
+                    <li><a href="#" class="account">Account</a></li>
+                    <li class="sep"><span>|</span></li>
+                    <li><a href="/login" class="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <!-- Menu -->
+        <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+            <div class="row column side-bar">
+                <ul class="side-nav menu vertical">
+                    <li class="active"><a href="/dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                    <li><a href="/detail"><i class="fa fa-pie-chart"></i>Detail Page</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="off-canvas-content" data-off-canvas-content>
+            <div class="title-bar hide-for-large">
+                <div class="title-bar-left">
+                    <button class="menu-icon" type="button" data-open="my-info"></button>
+                    <span class="title-bar-title">Menu</span>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="large-6 columns">
+                    
+                    <!-- Filters -->
+                    <div class="row options">
+                        <div class="large-4 medium-4 columns">
+                            <input id="radio-all" ng-model="levelName" type="radio" name="level">
+                            <label for="radio-all">All</label>
+                            <input id="radio-critical" ng-model="levelName" type="radio" value="Critical" name="level">
+                            <label for="radio-critical">Critical</label>
+                            <input id="radio-important" ng-model="levelName" type="radio" value="Important" name="level">
+                            <label for="radio-important">Important</label>
+                        </div>
+                        <div class="large-3 medium-3 columns">
+                            <input id="checkbox1" type="checkbox">
+                            <label for="checkbox1">Stuttgart</label>
+                            <input id="checkbox2" type="checkbox">
+                            <label for="checkbox2">Berlin</label>
+                        </div>
+                        <div class="large-5 medium-5 small-12 columns">
+                            <input id="checkbox3" type="checkbox">
+                            <label for="checkbox3">My Department</label>
+                            <input id="checkbox4" type="checkbox" checked>
+                            <label for="checkbox4">All Departments {{$location.path()}}</label>
+                        </div>
+                    </div>
+                    <hr>
+                    
+                    <!-- Loop on equipments array -->
+                    <div class="box column" ng-repeat=" d in equipments | filter:search | filter:levelName">
+                        <div class="row header-box">
+                            <div class="large-12 columns">
+                                <i class="fa fa-exclamation-triangle header-icon"></i>
+                                <img class="header-img" ng-src="../app_content/img/{{d.img}}.jpg" width="64" height="64" alt="">
+                                <h2 class="header-title"><a href="/detail">{{d.title}} <span>( {{d.location}} )</span></a></h2>
+                                <p class="meta">{{d.event_time}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row content-box">
+                            <div class="large-12 columns">
+                                <h4>{{d.type_of_problem}} <i class="fa fa-caret-right"></i></h4>
+                            </div>
+                            <div class="large-6 medium-6 columns">
+                                <h3>Lorem ipsum dolor sit amet</h3>
+                                <p>{{d.description}}</p>
+                            </div>
+                            <div class="large-6 medium-6 columns">
+                                <img class="header-img" ng-src="../app_content/img/{{d.icon}}.jpg" width="399" height="228" alt="">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row footer-meta">
+                            <div class="large-6 columns" ng-click="showCommentBox();">
+                                <a ng-click="showCommentBox();"><i class="fa fa-commenting"></i> Add comment</a>
+                            </div>
+                            
+                            <!-- Add Comments Form -->
+                            <form class="comment_form" ng-submit="btn_add(txt)" ng-show="commentBox">
+                                <textarea ng-model="txt" placeholder="Your Comment"></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                            <div class="large-6 columns text-right">
+                                <a href="#" class="share"><i class="fa fa-mail-forward"></i> Share <i class="fa fa-chevron-right"></i></a>
+                                <a href="#"><i class="fa fa-user"></i> Assign <i class="fa fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row comments">
+                            <div class="large-12 column">
+                                <div class="comment-wrp" ng-repeat="cm in comment track by $index">
+                                    <img class="user-img" src="../app_content/img/marty.jpg" width="64" height="64" alt="">
+                                    <h5 class="user-name">Marty</h5>
+                                    <p class="comment-meta">Monday, 15.11.2015, 16:34:44</p>
+                                    <div class="comment">
+                                        <p>{{cm}} <a style="float: right;" ng-click="remItem($index)">x</a></p>
+                                    </div>
+                                </div>
+                                <div class="comment-wrp">
+                                    <img class="user-img" src="../app_content/img/marty.jpg" width="64" height="64" alt="">
+                                    <h5 class="user-name">Marty</h5>
+                                    <p class="comment-meta">Monday, 15.11.2015, 16:34:44</p>
+                                    <div class="comment">
+                                        <p>This is happening all the time, and we tried to replace the controller already twice,
+                                            no idea what else we coud do now?</p>
+                                    </div>
+                                </div>
+                                <div class="comment-wrp">
+                                    <img class="user-img" src="../app_content/img/molly.jpg" width="64" height="64" alt="">
+                                    <h5 class="user-name">Molly</h5>
+                                    <p class="comment-meta">Monday, 15.11.2015, 16:34:44</p>
+                                    <div class="comment">
+                                        <p>This is happening all the time, and we tried to replace the controller already twice,
+                                            no idea what else we coud do now?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div class="custom-panel equipment-summary">
+                        <div class="custom-panel-heading">
+                            <i class="fa fa-gear"></i>
+                            <h4>Equipment summary</h4>
+                        </div>
+
+                        <div class="custom-panel-body">
+                            <div class="row">
+                                <div class="large-6 columns equipment-chart ">
+                                    <!-- Pie Chart -->
+                                      <pie-chart data="chartData" title="{{chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}"></pie-chart>
+                                </div>
+                                <div class="large-6 columns equipment-status">
+                                    <h5>Current status</h5>
+                                    <p><span class="square current">&nbsp;</span>All systems clear</p>
+                                    <h5>Upcoming</h5>
+                                    <p><span class="square upcoming">&nbsp;</span>Building close-down scheduled for Sun, 3am</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-panel tasks">
+                        <!-- Tasks Added -->
+                        <div class="custom-panel-heading">
+                            <i class="fa fa-gear"></i>
+                            <h4>My tasks</h4>
+                        </div>
+                        <div class="custom-panel-body">
+                            <div class="row">
+                                <div class="large-12 columns inbox">
+                                    <h3 class="task-header"><i class="fa fa-arrow-circle-down"></i>Inbox (drag to “Today” or “Later”)</h3>
+                                    <ul class="no-bullet">
+                                        <li>Protomat - investigate rear fan service interruption <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                        <li>Dremel17 - investigate main drive imbance <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="large-12 columns today">
+                                    <h3 class="task-header"><i class="fa fa-th-large"></i>Planned for Today</h3>
+                                    <ul class="no-bullet">
+                                        <li>HP 273xn - replace Toner (b/w) <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                        <li>Riprop 3Dj - investigate intermittent error “ER188n”) <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                        <li class="not-active">ThinkVista 98 - fix BSOD after USB disconnect) <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="large-12 columns later">
+                                    <h3 class="task-header"><i class="fa fa-th"></i>Planned for Later</h3>
+                                    <ul class="no-bullet">
+                                        <li>- all clear - <i class="fa fa-caret-right"></i>
+                                            <input type="checkbox" id="checkbox1">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
